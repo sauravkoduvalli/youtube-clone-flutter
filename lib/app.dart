@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:youtube/core/layout/responsive_layout.dart';
 
-import 'screens/home_screen.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -14,7 +14,7 @@ class App extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const HomeScreen(),
+      home: const ResponsiveLayout(),
     );
   }
 }

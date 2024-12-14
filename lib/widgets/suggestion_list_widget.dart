@@ -29,15 +29,16 @@ class SuggestionListWidget extends StatelessWidget {
       size: Size.fromHeight(MediaQuery.of(context).size.height * 0.1),
       child: ListView.builder(
         itemBuilder: (BuildContext context, int index) {
-          suggestions.add("new");
           if (index == 0) {
             return Container(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: const Text("Explore"));
+              padding: EdgeInsets.symmetric(vertical: 0, horizontal: 6.0),
+              child: Icon(Icons.explore_outlined),
+            );
           } else {
             return Container(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: Text(suggestions[index - 1]));
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Text(suggestions[index - 1]),
+            );
           }
         },
         scrollDirection: Axis.horizontal,
