@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:youtube/screens/mobile/create_screen.dart';
+import 'package:youtube/screens/mobile/home_screen.dart';
+import 'package:youtube/screens/mobile/profile_screen.dart';
+import 'package:youtube/screens/mobile/shorts_screen.dart';
+import 'package:youtube/screens/mobile/subscription_screen.dart';
 
 class BottomNavbarWidget extends StatefulWidget {
   const BottomNavbarWidget({super.key});
@@ -10,29 +14,12 @@ class BottomNavbarWidget extends StatefulWidget {
 
 class _BottomNavbarWidgetState extends State<BottomNavbarWidget> {
   int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Home',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 1: Business',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 2: School',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 3: subs',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 4: profile',
-      style: optionStyle,
-    ),
+  static const List<Widget> _screenOptions = <Widget>[
+    HomeScreen(),
+    ShortsScreen(),
+    CreateScreen(),
+    SubscriptionScreen(),
+    ProfileScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -45,35 +32,15 @@ class _BottomNavbarWidgetState extends State<BottomNavbarWidget> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          title: SvgPicture.asset(
-            "assets/images/youtube-logo-light-mode.svg",
-            width: MediaQuery.of(context).size.width * 0.25,
-          ),
-          actions: [
-            IconButton(
-              onPressed: () => debugPrint("First icon pressed"),
-              icon: const Icon(Icons.cast_outlined),
-            ),
-            IconButton(
-              onPressed: () => debugPrint("Second icon pressed"),
-              icon: const Icon(Icons.notifications_none_outlined),
-            ),
-            IconButton(
-              onPressed: () => debugPrint("third icon pressed"),
-              icon: const Icon(Icons.search_outlined),
-            ),
-          ],
-        ),
         body: Center(
-          child: _widgetOptions.elementAt(_selectedIndex),
+          child: _screenOptions.elementAt(_selectedIndex),
         ),
         bottomNavigationBar: BottomNavigationBar(
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(Icons.home_outlined),
               label: "Home",
-              backgroundColor: Colors.red,
+              // backgroundColor: Colors.red,
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.switch_access_shortcut_add_sharp),
@@ -95,7 +62,7 @@ class _BottomNavbarWidgetState extends State<BottomNavbarWidget> {
           onTap: _onItemTapped,
           type: BottomNavigationBarType.fixed,
           currentIndex: _selectedIndex,
-          selectedItemColor: Colors.amber[800],
+          selectedItemColor: Colors.pinkAccent,
         ),
       ),
     );
